@@ -1,8 +1,8 @@
-.pantalones-container h1{  
+.uniformes-container h1{  
   padding-top: 60px;
 }
 
-.pantalones-grid {
+.uniformes-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -11,7 +11,7 @@
   margin-left: 150px; 
 }
 
-.pantalon-card {
+.uniforme-card {
   background-color: #f4f4f4;
   padding: 15px;
   border-radius: 8px;
@@ -19,24 +19,24 @@
   text-align: center;
 }
 
-.pantalon-img {
+.uniforme-img {
   width: 100px;
   height: 100px;
   border-radius: 4px;
   object-fit: cover;
 }
 
-.pantalon-card h3 {
+.uniforme-card h3 {
   font-size: 18px;
   margin: 10px 0;
 }
 
-.pantalon-card p {
+.uniforme-card p {
   font-size: 14px;
   color: #555;
 }
 
-/* Modal para detalles de pantalón */
+/* Modal para detalles de uniforme */
 .modal-detalle {
   position: fixed;
   top: 0;
@@ -161,14 +161,14 @@
 }
 
 @media (max-width: 768px) {
-  .pantalones-grid {
+  .uniformes-grid {
     grid-template-columns: repeat(2, 1fr);
     width: calc(100% - 200px);
   }
 }
 
 @media (max-width: 480px) {
-  .pantalones-grid {
+  .uniformes-grid {
     grid-template-columns: repeat(1, 1fr);
     width: calc(100% - 200px);
   }

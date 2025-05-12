@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "../style/uniformes.css";
+import "../style/todosLosProductos.css";
 import ModalProducto from "../views/ModalProducto"; 
 import { obtenerArticulos } from "../services/articulos"; 
 const BASE_URL = "http://localhost/carrito-backend/";
 
-function Uniformes({ setCarritoItems }) { 
-  const [uniformesData, setUniformesData] = useState([]);
+function Productos({ setCarritoItems }) {
+  const [productosData, setProductosData] = useState([]);
   const [modalAbierto, setModalAbierto] = useState(false);
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
 
@@ -14,13 +14,12 @@ function Uniformes({ setCarritoItems }) {
       try {
         const data = await obtenerArticulos();
         if (data && Array.isArray(data)) {
-           const uniformes = data.filter(item => item.categoria === "uniformes");
-          setUniformesData(uniformes);
+          setProductosData(data);
         } else {
           console.error("Datos inválidos:", data);
         }
       } catch (error) {
-        console.error("Error al obtener uniformes:", error);
+        console.error("Error al obtener productos:", error);
       }
     };
     fetchData();
@@ -37,14 +36,14 @@ function Uniformes({ setCarritoItems }) {
   };
 
   return (
-    <div className="uniformes-container">
-      <h1>UNIFORMES</h1>
-      <div className="uniformes-grid">
-        {uniformesData.map(uniforme => (
-          <div className="uniforme-card" key={uniforme.id} onClick={() => abrirModal(uniforme)}>
-            <img src={`${BASE_URL}${uniforme.imagen}`} alt={uniforme.nombre} className="uniforme-img" />
-            <h3>{uniforme.nombre}</h3>
-            <p>${parseInt(uniforme.precio)}</p>
+    <div className="productos-container">
+      <h1>PRODUCTOS</h1>
+      <div className="productos-grid">
+        {productosData.map(producto => (
+          <div className="producto-card" key={producto.id} onClick={() => abrirModal(producto)}>
+            <img src={`${BASE_URL}${producto.imagen}`} alt={producto.nombre} className="producto-img" />
+            <h3>{producto.nombre}</h3>
+            <p>${parseInt(producto.precio)}</p>
           </div>
         ))}
       </div>
@@ -54,11 +53,11 @@ function Uniformes({ setCarritoItems }) {
         <ModalProducto
           producto={productoSeleccionado}
           onClose={cerrarModal}
-          setCarritoItems={setCarritoItems} 
+          setCarritoItems={setCarritoItems} // Pasamos la función al Modal
         />
       )}
     </div>
   );
 }
 
-export default Uniformes;
+export default Productos;

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
-import TodosLosProductos from "../views/todosLosProductos";
+import Productos from "../views/Productos";
 import Camisas from "../views/camisas";
 import PantalonesYSudaderas from "../views/PantalonesYSudaderas";
 import Uniformes from "../views/Uniformes";
@@ -38,7 +38,7 @@ function AppRouter() {
         {/* Usuario */}
         {isAuth && role === "user" && (
           <>
-            <Route path="/" element={<TodosLosProductos />} />
+            <Route path="/" element={<Productos />} />
             <Route path="/camisas" element={<Camisas />} />
             <Route path="/pantalonesYSudaderas" element={<PantalonesYSudaderas />} />
             <Route path="/uniformes" element={<Uniformes />} />
